@@ -936,7 +936,8 @@ def build_report():
         "sections": [
             build_page1(),
             build_page2()
-        ]
+        ],
+        "theme": "Digital_Agency_Dashboard_Desig3362615343750506.json"
     }
 
     return report
