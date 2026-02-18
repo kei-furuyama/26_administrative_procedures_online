@@ -5,6 +5,11 @@
       "report": {
         "path": "26_administrative_procedures_online.Report"
       }
+    },
+    {
+      "dataset": {
+        "path": "26_administrative_procedures_online.Dataset"
+      }
     }
   ],
   "settings": {
