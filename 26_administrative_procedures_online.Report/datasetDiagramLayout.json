@@ -11,12 +11,12 @@
         {
           "location": {
             "x": 0,
-            "y": 36
+            "y": 0
           },
-          "nodeIndex": "Table",
-          "nodeLineageTag": "74c7dcbc-f534-4da1-9c59-174298c17e81",
+          "nodeIndex": "オンライン化状況",
+          "nodeLineageTag": "a1000001-0001-0001-0001-000000000000",
           "size": {
-            "height": 128,
+            "height": 200,
             "width": 234
           },
           "zIndex": 1
@@ -26,62 +26,13 @@
             "x": 284,
             "y": 0
           },
-          "nodeIndex": "2. Report-Specific Objects",
+          "nodeIndex": "完了状況",
+          "nodeLineageTag": "c1000001-0001-0001-0001-000000000000",
           "size": {
             "height": 200,
             "width": 234
           },
           "zIndex": 2
-        },
-        {
-          "location": {
-            "x": 568,
-            "y": 0
-          },
-          "nodeIndex": "1. Measures",
-          "size": {
-            "height": 200,
-            "width": 234
-          },
-          "zIndex": 3
-        },
-        {
-          "location": {
-            "x": 1136,
-            "y": 36
-          },
-          "nodeIndex": "3. Report-Specific Calculation Group",
-          "nodeLineageTag": "e8e227b7-fd27-4a64-87a2-95da79648028",
-          "size": {
-            "height": 128,
-            "width": 234
-          },
-          "zIndex": 4
-        },
-        {
-          "location": {
-            "x": 1420,
-            "y": 0
-          },
-          "nodeIndex": "3. Report-Specific Disconnected Table",
-          "size": {
-            "height": 200,
-            "width": 234
-          },
-          "zIndex": 5
-        },
-        {
-          "location": {
-            "x": 15,
-            "y": 213
-          },
-          "nodeIndex": "Date",
-          "nodeLineageTag": "44d6cdc9-97fa-41ba-92c3-19c387a366aa",
-          "size": {
-            "height": 200,
-            "width": 234
-          },
-          "zIndex": 6
         }
       ],
       "name": "All tables",
