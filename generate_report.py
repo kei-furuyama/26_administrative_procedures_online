@@ -1,40 +1,25 @@
 #!/usr/bin/env python3
 """
-Generate a complete Power BI report.json for the administrative procedures online dashboard.
+Generate a clean, minimal report.json for the 26 administrative procedures
+online status Power BI report (PBIP format).
+
 Two pages:
-  - Page 1: 都道府県一覧 (Prefecture overview with donut chart, KPI cards, and matrix)
-  - Page 2: 市区町村詳細 (Municipality detail with slicers, donut, KPI cards, and cross-tab matrix)
+  - Page 1: 都道府県一覧 (Prefecture overview with cards, donut chart, and matrix)
+  - Page 2: 市区町村詳細 (Municipality detail with slicers, cards, and cross-tab matrix)
+
+This script builds the JSON programmatically using json.dumps() to ensure
+all embedded JSON strings are properly escaped.
 """
 
 import json
 import os
-
-# ============================================================
-# DESIGN CONSTANTS
-# ============================================================
-PRIMARY_BLUE = "#0017C1"
-BG_VISUAL = "#F8F8FB"
-PAGE_BG = "#FFFFFF"
-TEXT_COLOR = "#1A1A1A"
-TEXT_SECONDARY = "#666666"
-TEXT_MUTED = "#999999"
-BORDER_COLOR = "#F8F8FB"
-BORDER_RADIUS = 20
-GRID_LINE_COLOR = "#D8D8DB"
-COMPLETED_COLOR = "#0017C1"
-INCOMPLETE_GRAY = "#D8D8DB"
-LIGHT_BLUE = "#C5D7FB"
-HEADER_BG = "#F1F1F4"
-FONT_FAMILY = "Arial"
-DONUT_INNER_RADIUS = 82
-PAGE_WIDTH = 1920
-PAGE_HEIGHT = 1080
-CARD_BORDER_COLOR = "#E8E8EB"
+import sys
 
 
 # ============================================================
-# HELPER: literal expression builders
+# Helper: Power BI literal expression builders
 # ============================================================
+
 def lit(val):
     """Wrap a value in a PBI Literal expression."""
     return {"expr": {"Literal": {"Value": val}}}
@@ -60,50 +45,18 @@ def solid_color(c):
     return {"solid": {"color": lit_str(c)}}
 
 
-def solid_color_raw(c):
-    """Solid color without literal wrapping (for non-expression contexts)."""
-    return {"solid": {"color": c}}
+# ============================================================
+# Helper: layout position
+# ============================================================
+
+def position(x, y, z, w, h, tab=0):
+    return {"x": x, "y": y, "z": z, "width": w, "height": h, "tabOrder": tab}
 
 
 # ============================================================
-# HELPER: standard vcObjects
+# Helper: make a visual container dict
 # ============================================================
-def std_vc_objects(show_bg=False, bg_color=BG_VISUAL, show_border=False,
-                   border_color=BG_VISUAL, border_radius=BORDER_RADIUS):
-    return {
-        "title": [{"properties": {"show": lit_bool(False)}}],
-        "background": [{"properties": {
-            "show": lit_bool(show_bg),
-            "color": solid_color(bg_color),
-            "transparency": lit_double(0)
-        }}],
-        "border": [{"properties": {
-            "show": lit_bool(show_border),
-            "color": solid_color(border_color),
-            "radius": lit_int(border_radius)
-        }}],
-        "padding": [{"properties": {
-            "top": lit_double(0),
-            "bottom": lit_double(0),
-            "left": lit_double(0),
-            "right": lit_double(0)
-        }}]
-    }
 
-
-def hidden_vc_objects():
-    """vcObjects that hide everything (for shapes, buttons)."""
-    return {
-        "title": [{"properties": {"show": lit_bool(False)}}],
-        "background": [{"properties": {"show": lit_bool(False)}}],
-        "border": [{"properties": {"show": lit_bool(False)}}],
-        "visualHeader": [{"properties": {"show": lit_bool(False)}}]
-    }
-
-
-# ============================================================
-# HELPER: make a visual container dict
-# ============================================================
 def make_visual_container(config_dict, filters_list, x, y, w, h, z):
     return {
         "config": json.dumps(config_dict, ensure_ascii=False),
@@ -116,16 +69,39 @@ def make_visual_container(config_dict, filters_list, x, y, w, h, z):
     }
 
 
-def position(x, y, z, w, h, tab=0):
-    return {"x": x, "y": y, "z": z, "width": w, "height": h, "tabOrder": tab}
+# ============================================================
+# Helper: minimal vcObjects
+# ============================================================
+
+def minimal_vc_objects():
+    """Hide title only, let the default theme handle everything else."""
+    return {
+        "title": [{"properties": {"show": lit_bool(False)}}]
+    }
+
+
+def hidden_vc_objects():
+    """Hide title, background, border, and visual header."""
+    return {
+        "title": [{"properties": {"show": lit_bool(False)}}],
+        "background": [{"properties": {"show": lit_bool(False)}}],
+        "border": [{"properties": {"show": lit_bool(False)}}],
+        "visualHeader": [{"properties": {"show": lit_bool(False)}}]
+    }
 
 
 # ============================================================
-# HELPER: textbox
+# Helper: textbox visual
 # ============================================================
-def make_textbox(name, x, y, w, h, z, paragraphs_json, vc_objects=None):
+
+def make_textbox(name, x, y, w, h, z, paragraphs_obj, vc_objects=None):
+    """Build a textbox visual container.
+
+    paragraphs_obj: a dict like {"paragraphs": [...]} which will be
+    json.dumps'd into the embedded literal string.
+    """
     if vc_objects is None:
-        vc_objects = std_vc_objects()
+        vc_objects = hidden_vc_objects()
     config = {
         "name": name,
         "layouts": [{"id": 0, "position": position(x, y, z, w, h)}],
@@ -133,7 +109,7 @@ def make_textbox(name, x, y, w, h, z, paragraphs_json, vc_objects=None):
             "visualType": "textbox",
             "objects": {
                 "general": [{"properties": {
-                    "paragraphs": lit(json.dumps(paragraphs_json, ensure_ascii=False))
+                    "paragraphs": lit(json.dumps(paragraphs_obj, ensure_ascii=False))
                 }}]
             },
             "vcObjects": vc_objects
@@ -143,11 +119,11 @@ def make_textbox(name, x, y, w, h, z, paragraphs_json, vc_objects=None):
 
 
 # ============================================================
-# HELPER: card visual
+# Helper: card visual
 # ============================================================
-def make_card(name, x, y, w, h, z, measure_name, font_size=28, vc_objects=None):
-    if vc_objects is None:
-        vc_objects = std_vc_objects()
+
+def make_card(name, x, y, w, h, z, measure_name):
+    """Build a card visual showing a single measure from オンライン化状況."""
     config = {
         "name": name,
         "layouts": [{"id": 0, "position": position(x, y, z, w, h)}],
@@ -159,95 +135,94 @@ def make_card(name, x, y, w, h, z, measure_name, font_size=28, vc_objects=None):
             "prototypeQuery": {
                 "Version": 2,
                 "From": [{"Name": "o", "Entity": "オンライン化状況", "Type": 0}],
-                "Select": [
-                    {
-                        "Measure": {
-                            "Expression": {"SourceRef": {"Source": "o"}},
-                            "Property": measure_name
-                        },
-                        "Name": f"o.{measure_name}"
-                    }
-                ]
+                "Select": [{
+                    "Measure": {
+                        "Expression": {"SourceRef": {"Source": "o"}},
+                        "Property": measure_name
+                    },
+                    "Name": f"o.{measure_name}"
+                }]
             },
             "objects": {
-                "labels": [{"properties": {
-                    "fontSize": lit_double(font_size),
-                    "color": solid_color(TEXT_COLOR),
-                    "fontFamily": lit_str(FONT_FAMILY)
-                }}],
-                "categoryLabels": [{"properties": {
-                    "show": lit_bool(False)
-                }}]
+                "categoryLabels": [{"properties": {"show": lit_bool(False)}}]
             },
-            "vcObjects": vc_objects
+            "vcObjects": minimal_vc_objects()
         }
     }
     return make_visual_container(config, [], x, y, w, h, z)
 
 
 # ============================================================
-# HELPER: shape visual (rounded rectangle)
+# Helper: slicer visual (dropdown)
 # ============================================================
-def make_shape(name, x, y, w, h, z, fill_color=PAGE_BG, line_color=CARD_BORDER_COLOR,
-               weight=1, round_edge=BORDER_RADIUS):
+
+def make_slicer(name, x, y, w, h, z, column_name, title_text):
+    """Build a dropdown slicer for a column from オンライン化状況."""
     config = {
         "name": name,
         "layouts": [{"id": 0, "position": position(x, y, z, w, h)}],
         "singleVisual": {
-            "visualType": "shape",
-            "objects": {
-                "line": [{"properties": {
-                    "lineColor": solid_color(line_color),
-                    "weight": lit_double(weight),
-                    "roundEdge": lit_int(round_edge)
-                }}],
-                "fill": [{"properties": {
-                    "fillColor": solid_color(fill_color),
-                    "transparency": lit_double(0)
-                }}]
+            "visualType": "slicer",
+            "projections": {
+                "Values": [{"queryRef": f"o.{column_name}"}]
             },
-            "vcObjects": hidden_vc_objects()
+            "prototypeQuery": {
+                "Version": 2,
+                "From": [{"Name": "o", "Entity": "オンライン化状況", "Type": 0}],
+                "Select": [{
+                    "Column": {
+                        "Expression": {"SourceRef": {"Source": "o"}},
+                        "Property": column_name
+                    },
+                    "Name": f"o.{column_name}"
+                }]
+            },
+            "objects": {
+                "general": [{"properties": {"responsive": lit_bool(True)}}],
+                "data": [{"properties": {"mode": lit_str("Dropdown")}}],
+                "selection": [{"properties": {"singleSelect": lit_bool(False)}}],
+                "header": [{"properties": {"show": lit_bool(False)}}]
+            },
+            "vcObjects": {
+                "title": [{"properties": {
+                    "show": lit_bool(True),
+                    "text": lit_str(title_text)
+                }}]
+            }
         }
     }
     return make_visual_container(config, [], x, y, w, h, z)
 
 
 # ============================================================
-# HELPER: donut chart data-point selectors
+# PAGE 1: 都道府県一覧
 # ============================================================
-def donut_data_point_selector(entity, prop, value, color):
-    return {
-        "properties": {
-            "fill": solid_color(color)
-        },
-        "selector": {
-            "data": [{
-                "scopeId": {
-                    "Comparison": {
-                        "ComparisonKind": 0,
-                        "Left": {
-                            "Column": {
-                                "Expression": {"SourceRef": {"Entity": entity}},
-                                "Property": prop
-                            }
-                        },
-                        "Right": {"Literal": {"Value": f"'{value}'"}}
-                    }
-                }
-            }]
-        }
-    }
 
+def build_page1():
+    visuals = []
 
-# ============================================================
-# HELPER: donut chart
-# ============================================================
-def make_donut(name, x, y, w, h, z, label_font_size=36, vc_objects=None):
-    if vc_objects is None:
-        vc_objects = std_vc_objects()
-    config = {
-        "name": name,
-        "layouts": [{"id": 0, "position": position(x, y, z, w, h)}],
+    # 1. Title textbox
+    title_paragraphs = {"paragraphs": [{
+        "textRuns": [{
+            "value": "子育て・介護関係の26手続のオンライン化取組状況",
+            "textStyle": {"fontWeight": "bold"}
+        }]
+    }]}
+    visuals.append(make_textbox("vc_p1_title", 40, 20, 900, 50, 0, title_paragraphs))
+
+    # 2. Card: 子育て介護26手続完了率
+    visuals.append(make_card("vc_p1_card_rate", 40, 90, 250, 80, 0, "子育て介護26手続完了率"))
+
+    # 3. Card: 子育て介護26手続完了自治体数
+    visuals.append(make_card("vc_p1_card_completed", 300, 90, 250, 80, 0, "子育て介護26手続完了自治体数"))
+
+    # 4. Card: 自治体数
+    visuals.append(make_card("vc_p1_card_total", 560, 90, 250, 80, 0, "自治体数"))
+
+    # 5. Donut chart
+    donut_config = {
+        "name": "vc_p1_donut",
+        "layouts": [{"id": 0, "position": position(40, 190, 0, 400, 400)}],
         "singleVisual": {
             "visualType": "donutChart",
             "projections": {
@@ -284,296 +259,22 @@ def make_donut(name, x, y, w, h, z, label_font_size=36, vc_objects=None):
                 }]
             },
             "objects": {
-                "legend": [{"properties": {"show": lit_bool(False)}}],
-                "dataPoint": [
-                    donut_data_point_selector("完了状況", "ステータス", "完了", COMPLETED_COLOR),
-                    donut_data_point_selector("完了状況", "ステータス", "未完了", INCOMPLETE_GRAY)
-                ],
-                "labels": [{"properties": {
-                    "show": lit_bool(True),
-                    "labelStyle": lit_str("Percent of total"),
-                    "fontSize": lit_double(label_font_size),
-                    "color": solid_color(TEXT_COLOR),
-                    "fontFamily": lit_str(FONT_FAMILY)
-                }}],
-                "slices": [{"properties": {
-                    "innerRadiusRatio": lit_int(DONUT_INNER_RADIUS)
-                }}]
+                "legend": [{"properties": {"show": lit_bool(True)}}]
             },
-            "vcObjects": vc_objects
+            "vcObjects": minimal_vc_objects()
         }
     }
-    return make_visual_container(config, [], x, y, w, h, z)
+    visuals.append(make_visual_container(donut_config, [], 40, 190, 400, 400, 0))
 
-
-# ============================================================
-# HELPER: slicer visual
-# ============================================================
-def make_slicer(name, x, y, w, h, z, column_name, title_text):
-    slicer_vc = {
-        "title": [{"properties": {
-            "show": lit_bool(True),
-            "text": lit_str(title_text),
-            "fontColor": solid_color(TEXT_COLOR),
-            "fontSize": lit_double(12),
-            "fontFamily": lit_str(FONT_FAMILY)
-        }}],
-        "background": [{"properties": {"show": lit_bool(False)}}],
-        "border": [{"properties": {
-            "show": lit_bool(True),
-            "color": solid_color(GRID_LINE_COLOR),
-            "radius": lit_int(10)
-        }}],
-        "padding": [{"properties": {
-            "top": lit_double(0),
-            "bottom": lit_double(0),
-            "left": lit_double(0),
-            "right": lit_double(0)
-        }}]
-    }
-    config = {
-        "name": name,
-        "layouts": [{"id": 0, "position": position(x, y, z, w, h)}],
+    # 6. MultiRowCard: 47都道府県カード一覧
+    multirowcard_config = {
+        "name": "vc_p1_pref_cards",
+        "layouts": [{"id": 0, "position": position(40, 190, 0, 1860, 870)}],
         "singleVisual": {
-            "visualType": "slicer",
+            "visualType": "multiRowCard",
             "projections": {
-                "Values": [{"queryRef": f"o.{column_name}"}]
-            },
-            "prototypeQuery": {
-                "Version": 2,
-                "From": [{"Name": "o", "Entity": "オンライン化状況", "Type": 0}],
-                "Select": [
-                    {
-                        "Column": {
-                            "Expression": {"SourceRef": {"Source": "o"}},
-                            "Property": column_name
-                        },
-                        "Name": f"o.{column_name}"
-                    }
-                ]
-            },
-            "objects": {
-                "general": [{"properties": {
-                    "responsive": lit_bool(True)
-                }}],
-                "data": [{"properties": {
-                    "mode": lit_str("Dropdown")
-                }}],
-                "selection": [{"properties": {
-                    "singleSelect": lit_bool(False)
-                }}],
-                "header": [{"properties": {
-                    "show": lit_bool(False)
-                }}],
-                "items": [{"properties": {
-                    "textSize": lit_double(14),
-                    "fontFamily": lit_str(FONT_FAMILY),
-                    "padding": lit_int(6)
-                }}]
-            },
-            "vcObjects": slicer_vc
-        }
-    }
-    return make_visual_container(config, [], x, y, w, h, z)
-
-
-# ============================================================
-# MATRIX STYLING (shared between Page 1 and Page 2)
-# ============================================================
-def matrix_objects_base():
-    return {
-        "grid": [{"properties": {
-            "gridVertical": lit_bool(True),
-            "gridVerticalColor": solid_color(GRID_LINE_COLOR),
-            "gridVerticalWeight": lit_int(1),
-            "gridHorizontal": lit_bool(True),
-            "gridHorizontalColor": solid_color(GRID_LINE_COLOR),
-            "gridHorizontalWeight": lit_int(1),
-            "outlineColor": solid_color(GRID_LINE_COLOR),
-            "outlineWeight": lit_int(1),
-            "textSize": lit_double(14),
-            "rowPadding": lit_int(4)
-        }}],
-        "columnHeaders": [{"properties": {
-            "fontColor": solid_color(TEXT_COLOR),
-            "backColor": solid_color(HEADER_BG),
-            "bold": lit_bool(True),
-            "fontSize": lit_double(14),
-            "fontFamily": lit_str(FONT_FAMILY),
-            "outline": lit_str("Frame")
-        }}],
-        "rowHeaders": [{"properties": {
-            "fontColor": solid_color(TEXT_COLOR),
-            "backColor": solid_color(HEADER_BG),
-            "bold": lit_bool(True),
-            "fontSize": lit_double(14),
-            "fontFamily": lit_str(FONT_FAMILY),
-            "outline": lit_str("Frame")
-        }}],
-        "values": [{"properties": {
-            "fontColorPrimary": solid_color(TEXT_COLOR),
-            "backColorPrimary": solid_color(PAGE_BG),
-            "fontColorSecondary": solid_color(TEXT_COLOR),
-            "backColorSecondary": solid_color(BG_VISUAL),
-            "fontSize": lit_double(16),
-            "fontFamily": lit_str(FONT_FAMILY),
-            "outline": lit_str("Frame"),
-            "bandedRowHeaders": lit_bool(True)
-        }}],
-        "subTotals": [{"properties": {
-            "rowSubtotals": lit_bool(False),
-            "columnSubtotals": lit_bool(False)
-        }}]
-    }
-
-
-def matrix_vc_objects():
-    return {
-        "title": [{"properties": {"show": lit_bool(False)}}],
-        "background": [{"properties": {
-            "show": lit_bool(True),
-            "color": solid_color(PAGE_BG),
-            "transparency": lit_double(0)
-        }}],
-        "border": [{"properties": {
-            "show": lit_bool(True),
-            "color": solid_color(CARD_BORDER_COLOR),
-            "radius": lit_int(BORDER_RADIUS)
-        }}],
-        "padding": [{"properties": {
-            "top": lit_double(0),
-            "bottom": lit_double(0),
-            "left": lit_double(0),
-            "right": lit_double(0)
-        }}]
-    }
-
-
-# ============================================================
-# PAGE 1: 都道府県一覧
-# ============================================================
-def build_page1():
-    page_config = {
-        "objects": {
-            "background": [{"properties": {
-                "color": solid_color(PAGE_BG),
-                "transparency": lit_double(0)
-            }}]
-        }
-    }
-
-    visuals = []
-
-    # 1. Title textbox
-    title_paragraphs = {"paragraphs": [{
-        "textRuns": [{
-            "value": "子育て・介護関係の26手続のオンライン化取組状況",
-            "textStyle": {
-                "fontSize": "22px",
-                "color": TEXT_COLOR,
-                "fontWeight": "bold",
-                "fontFamily": FONT_FAMILY
-            }
-        }]
-    }]}
-    visuals.append(make_textbox("vc_p1_title", 40, 24, 900, 44, 0, title_paragraphs))
-
-    # 2. Org label
-    org_paragraphs = {"paragraphs": [{
-        "textRuns": [{
-            "value": "デジタル庁",
-            "textStyle": {
-                "fontSize": "14px",
-                "color": TEXT_COLOR,
-                "fontFamily": FONT_FAMILY
-            }
-        }],
-        "horizontalTextAlignment": "right"
-    }]}
-    visuals.append(make_textbox("vc_p1_org", 1740, 24, 160, 36, 0, org_paragraphs))
-
-    # 3. Left panel background (shape)
-    visuals.append(make_shape("vc_p1_left_bg", 20, 80, 440, 780, 0))
-
-    # 4. Subtitle
-    subtitle_paragraphs = {"paragraphs": [
-        {"textRuns": [{
-            "value": "子育て・介護関係の全26手続を",
-            "textStyle": {"fontSize": "16px", "color": TEXT_COLOR, "fontWeight": "bold", "fontFamily": FONT_FAMILY}
-        }]},
-        {"textRuns": [{
-            "value": "オンライン手続できる自治体の割合",
-            "textStyle": {"fontSize": "16px", "color": TEXT_COLOR, "fontWeight": "bold", "fontFamily": FONT_FAMILY}
-        }]}
-    ]}
-    visuals.append(make_textbox("vc_p1_subtitle", 50, 100, 400, 56, 1, subtitle_paragraphs))
-
-    # 5. Donut chart
-    visuals.append(make_donut("vc_p1_donut", 100, 180, 280, 280, 1, label_font_size=36))
-
-    # 6. KPI label
-    kpi_label_paragraphs = {"paragraphs": [{
-        "textRuns": [{
-            "value": "オンライン化が完了した自治体数／全自治体数",
-            "textStyle": {"fontSize": "12px", "color": TEXT_SECONDARY, "fontFamily": FONT_FAMILY}
-        }]
-    }]}
-    visuals.append(make_textbox("vc_p1_kpi_label", 50, 480, 380, 24, 1, kpi_label_paragraphs))
-
-    # 7. KPI completed card
-    visuals.append(make_card("vc_p1_kpi_completed", 80, 510, 130, 55, 1, "子育て介護26手続完了自治体数", 28))
-
-    # 8. Slash textbox
-    slash_paragraphs = {"paragraphs": [{
-        "textRuns": [{
-            "value": "／",
-            "textStyle": {"fontSize": "24px", "color": TEXT_COLOR, "fontFamily": FONT_FAMILY}
-        }]
-    }]}
-    visuals.append(make_textbox("vc_p1_slash", 210, 516, 30, 42, 1, slash_paragraphs))
-
-    # 9. KPI total card
-    visuals.append(make_card("vc_p1_kpi_total", 240, 510, 130, 55, 1, "自治体数", 28))
-
-    # 10. Legend textbox
-    legend_paragraphs = {"paragraphs": [
-        {"textRuns": [{"value": "凡例", "textStyle": {
-            "fontSize": "13px", "color": TEXT_COLOR, "fontWeight": "bold", "fontFamily": FONT_FAMILY
-        }}]},
-        {"textRuns": [{"value": "", "textStyle": {"fontSize": "8px"}}]},
-        {"textRuns": [
-            {"value": "●", "textStyle": {"fontSize": "13px", "color": COMPLETED_COLOR, "fontFamily": FONT_FAMILY}},
-            {"value": " 100%（全26手続オンライン化完了）", "textStyle": {
-                "fontSize": "13px", "color": TEXT_SECONDARY, "fontFamily": FONT_FAMILY
-            }}
-        ]},
-        {"textRuns": [
-            {"value": "●", "textStyle": {"fontSize": "13px", "color": LIGHT_BLUE, "fontFamily": FONT_FAMILY}},
-            {"value": " 80%以上100%未満", "textStyle": {
-                "fontSize": "13px", "color": TEXT_SECONDARY, "fontFamily": FONT_FAMILY
-            }}
-        ]},
-        {"textRuns": [
-            {"value": "●", "textStyle": {"fontSize": "13px", "color": INCOMPLETE_GRAY, "fontFamily": FONT_FAMILY}},
-            {"value": " 80%未満", "textStyle": {
-                "fontSize": "13px", "color": TEXT_SECONDARY, "fontFamily": FONT_FAMILY
-            }}
-        ]}
-    ]}
-    visuals.append(make_textbox("vc_p1_legend", 50, 590, 380, 120, 1, legend_paragraphs))
-
-    # 11. Matrix (pivotTable)
-    matrix_config = {
-        "name": "vc_p1_matrix",
-        "layouts": [{"id": 0, "position": position(480, 80, 0, 1420, 880)}],
-        "singleVisual": {
-            "visualType": "pivotTable",
-            "projections": {
-                "Rows": [
-                    {"queryRef": "o.地域ブロック"},
-                    {"queryRef": "o.都道府県"}
-                ],
                 "Values": [
+                    {"queryRef": "o.都道府県"},
                     {"queryRef": "o.子育て介護26手続完了率"},
                     {"queryRef": "o.子育て介護26手続完了自治体数"},
                     {"queryRef": "o.自治体数"}
@@ -583,13 +284,6 @@ def build_page1():
                 "Version": 2,
                 "From": [{"Name": "o", "Entity": "オンライン化状況", "Type": 0}],
                 "Select": [
-                    {
-                        "Column": {
-                            "Expression": {"SourceRef": {"Source": "o"}},
-                            "Property": "地域ブロック"
-                        },
-                        "Name": "o.地域ブロック"
-                    },
                     {
                         "Column": {
                             "Expression": {"SourceRef": {"Source": "o"}},
@@ -620,89 +314,69 @@ def build_page1():
                     }
                 ]
             },
-            "objects": matrix_objects_base(),
-            "vcObjects": matrix_vc_objects()
+            "objects": {},
+            "vcObjects": minimal_vc_objects()
         }
     }
-    visuals.append(make_visual_container(matrix_config, [], 480, 80, 1420, 880, 0))
-
-    # 12. Date label
-    date_paragraphs = {"paragraphs": [{
-        "textRuns": [{
-            "value": "令和６年度末時点",
-            "textStyle": {"fontSize": "11px", "color": TEXT_MUTED, "fontFamily": FONT_FAMILY}
-        }],
-        "horizontalTextAlignment": "right"
-    }]}
-    visuals.append(make_textbox("vc_p1_date", 1620, 980, 280, 24, 1, date_paragraphs))
+    visuals.append(make_visual_container(multirowcard_config, [], 40, 190, 1860, 870, 0))
 
     return {
-        "config": json.dumps(page_config, ensure_ascii=False),
+        "config": json.dumps({}, ensure_ascii=False),
         "displayName": "都道府県一覧",
         "displayOption": 1,
-        "filters": "[]",
-        "height": float(PAGE_HEIGHT),
+        "filters": json.dumps([], ensure_ascii=False),
+        "height": 1080.0,
         "name": "ReportSection_page1",
         "ordinal": 0,
         "visualContainers": visuals,
-        "width": float(PAGE_WIDTH)
+        "width": 1920.0
     }
 
 
 # ============================================================
 # PAGE 2: 市区町村詳細
 # ============================================================
-def build_page2():
-    page_config = {
-        "objects": {
-            "background": [{"properties": {
-                "color": solid_color(PAGE_BG),
-                "transparency": lit_double(0)
-            }}]
-        }
-    }
 
-    # Page-level filter
-    page_filters = [
-        {
-            "name": "filter_subcat",
-            "expression": {
-                "Column": {
-                    "Expression": {"SourceRef": {"Entity": "オンライン化状況"}},
-                    "Property": "サブカテゴリ"
-                }
-            },
-            "type": "Categorical",
-            "filter": {
-                "Version": 2,
-                "From": [{"Name": "o", "Entity": "オンライン化状況", "Type": 0}],
-                "Where": [{
-                    "Condition": {
-                        "In": {
-                            "Expressions": [{
-                                "Column": {
-                                    "Expression": {"SourceRef": {"Source": "o"}},
-                                    "Property": "サブカテゴリ"
-                                }
-                            }],
-                            "Values": [
-                                [{"Literal": {"Value": "'ア.子育て関係'"}}],
-                                [{"Literal": {"Value": "'イ.介護関係'"}}]
-                            ]
-                        }
+def build_page2():
+    # Page-level filter: サブカテゴリ IN {子育て, 介護}
+    page_filters = [{
+        "name": "filter_subcat",
+        "expression": {
+            "Column": {
+                "Expression": {"SourceRef": {"Entity": "オンライン化状況"}},
+                "Property": "サブカテゴリ"
+            }
+        },
+        "type": "Categorical",
+        "filter": {
+            "Version": 2,
+            "From": [{"Name": "o", "Entity": "オンライン化状況", "Type": 0}],
+            "Where": [{
+                "Condition": {
+                    "In": {
+                        "Expressions": [{
+                            "Column": {
+                                "Expression": {"SourceRef": {"Source": "o"}},
+                                "Property": "サブカテゴリ"
+                            }
+                        }],
+                        "Values": [
+                            [{"Literal": {"Value": "'ア.子育て関係'"}}],
+                            [{"Literal": {"Value": "'イ.介護関係'"}}]
+                        ]
                     }
-                }]
-            },
-            "isHiddenInViewMode": True
-        }
-    ]
+                }
+            }]
+        },
+        "isHiddenInViewMode": True
+    }]
 
     visuals = []
 
     # 1. Back button
     back_config = {
         "name": "vc_p2_back",
-        "layouts": [{"id": 0, "position": position(20, 20, 0, 240, 30)}],
+        "layouts": [{"id": 0, "position": position(20, 20, 0, 240, 36)}],
         "singleVisual": {
             "visualType": "actionButton",
             "objects": {
@@ -710,11 +384,7 @@ def build_page2():
                 "outline": [{"properties": {"show": lit_bool(False)}}],
                 "text": [{"properties": {
                     "show": lit_bool(True),
-                    "text": lit_str("< 都道府県一覧に戻る"),
-                    "fontColor": solid_color(PRIMARY_BLUE),
-                    "fontSize": lit_double(14),
-                    "fontFamily": lit_str(FONT_FAMILY),
-                    "alignment": lit_str("Left")
+                    "text": lit_str("< 都道府県一覧に戻る")
                 }}],
                 "action": [{"properties": {
                     "type": lit_str("PageNavigation"),
@@ -724,71 +394,27 @@ def build_page2():
             "vcObjects": hidden_vc_objects()
         }
     }
-    visuals.append(make_visual_container(back_config, [], 20, 20, 240, 30, 0))
+    visuals.append(make_visual_container(back_config, [], 20, 20, 240, 36, 0))
 
-    # 2. Org label
-    org_paragraphs = {"paragraphs": [{
-        "textRuns": [{
-            "value": "デジタル庁",
-            "textStyle": {"fontSize": "14px", "color": TEXT_COLOR, "fontFamily": FONT_FAMILY}
-        }],
-        "horizontalTextAlignment": "right"
-    }]}
-    visuals.append(make_textbox("vc_p2_org", 1740, 24, 160, 36, 0, org_paragraphs))
+    # 2. Slicer: 都道府県
+    visuals.append(make_slicer("vc_p2_slicer_pref", 20, 70, 280, 55, 0, "都道府県", "都道府県"))
 
-    # 3. Left panel background
-    visuals.append(make_shape("vc_p2_left_bg", 20, 60, 320, 620, 0))
+    # 3. Slicer: 団体名
+    visuals.append(make_slicer("vc_p2_slicer_muni", 320, 70, 280, 55, 0, "団体名", "団体名"))
 
-    # 4. Prefecture slicer
-    visuals.append(make_slicer("vc_p2_slicer_pref", 35, 75, 290, 55, 1, "都道府県", "都道府県で絞り込む"))
+    # 4. Card: 子育て介護26手続完了率
+    visuals.append(make_card("vc_p2_card_rate", 620, 70, 200, 55, 0, "子育て介護26手続完了率"))
 
-    # 5. Municipality slicer
-    visuals.append(make_slicer("vc_p2_slicer_muni", 35, 145, 290, 55, 1, "団体名", "団体名で絞り込む"))
+    # 5. Card: 子育て介護26手続完了自治体数
+    visuals.append(make_card("vc_p2_card_completed", 840, 70, 200, 55, 0, "子育て介護26手続完了自治体数"))
 
-    # 6. Subtitle
-    subtitle_paragraphs = {"paragraphs": [
-        {"textRuns": [{
-            "value": "子育て・介護関係の全26手続を",
-            "textStyle": {"fontSize": "14px", "color": TEXT_COLOR, "fontWeight": "bold", "fontFamily": FONT_FAMILY}
-        }]},
-        {"textRuns": [{
-            "value": "オンライン手続できる自治体の割合",
-            "textStyle": {"fontSize": "14px", "color": TEXT_COLOR, "fontWeight": "bold", "fontFamily": FONT_FAMILY}
-        }]}
-    ]}
-    visuals.append(make_textbox("vc_p2_subtitle", 35, 215, 290, 50, 1, subtitle_paragraphs))
+    # 6. Card: 自治体数
+    visuals.append(make_card("vc_p2_card_total", 1060, 70, 200, 55, 0, "自治体数"))
 
-    # 7. Donut chart (smaller)
-    visuals.append(make_donut("vc_p2_donut", 70, 280, 220, 220, 1, label_font_size=28))
-
-    # 8. KPI label
-    kpi_label_paragraphs = {"paragraphs": [{
-        "textRuns": [{
-            "value": "オンライン化が完了した自治体数／全自治体数",
-            "textStyle": {"fontSize": "11px", "color": TEXT_SECONDARY, "fontFamily": FONT_FAMILY}
-        }]
-    }]}
-    visuals.append(make_textbox("vc_p2_kpi_label", 35, 520, 290, 22, 1, kpi_label_paragraphs))
-
-    # 9. KPI completed card
-    visuals.append(make_card("vc_p2_kpi_completed", 60, 548, 110, 50, 1, "子育て介護26手続完了自治体数", 24))
-
-    # 10. Slash
-    slash_paragraphs = {"paragraphs": [{
-        "textRuns": [{
-            "value": "／",
-            "textStyle": {"fontSize": "20px", "color": TEXT_COLOR, "fontFamily": FONT_FAMILY}
-        }]
-    }]}
-    visuals.append(make_textbox("vc_p2_slash", 170, 554, 24, 38, 1, slash_paragraphs))
-
-    # 11. KPI total card
-    visuals.append(make_card("vc_p2_kpi_total", 194, 548, 110, 50, 1, "自治体数", 24))
-
-    # 12. Matrix (pivotTable) - cross-tab
+    # 7. Matrix: Detail cross-tab
     matrix2_config = {
         "name": "vc_p2_matrix",
-        "layouts": [{"id": 0, "position": position(360, 20, 0, 1540, 1000)}],
+        "layouts": [{"id": 0, "position": position(20, 140, 0, 1880, 920)}],
         "singleVisual": {
             "visualType": "pivotTable",
             "projections": {
@@ -837,60 +463,40 @@ def build_page2():
                     }
                 ]
             },
-            "objects": matrix_objects_base(),
-            "vcObjects": matrix_vc_objects()
+            "objects": {
+                "subTotals": [{"properties": {
+                    "rowSubtotals": lit_bool(False),
+                    "columnSubtotals": lit_bool(False)
+                }}]
+            },
+            "vcObjects": minimal_vc_objects()
         }
     }
-    visuals.append(make_visual_container(matrix2_config, [], 360, 20, 1540, 1000, 0))
-
-    # 13. Legend
-    legend_paragraphs = {"paragraphs": [{
-        "textRuns": [
-            {"value": "●", "textStyle": {"fontSize": "12px", "color": COMPLETED_COLOR, "fontFamily": FONT_FAMILY}},
-            {"value": " オンライン手続できる　", "textStyle": {"fontSize": "12px", "color": TEXT_SECONDARY, "fontFamily": FONT_FAMILY}},
-            {"value": "●", "textStyle": {"fontSize": "12px", "color": INCOMPLETE_GRAY, "fontFamily": FONT_FAMILY}},
-            {"value": " オンライン手続できない　", "textStyle": {"fontSize": "12px", "color": TEXT_SECONDARY, "fontFamily": FONT_FAMILY}},
-            {"value": "ー 該当する手続がない", "textStyle": {"fontSize": "12px", "color": TEXT_SECONDARY, "fontFamily": FONT_FAMILY}}
-        ]
-    }]}
-    visuals.append(make_textbox("vc_p2_legend", 360, 1030, 700, 25, 0, legend_paragraphs))
-
-    # 14. Date label
-    date_paragraphs = {"paragraphs": [{
-        "textRuns": [{
-            "value": "令和６年度末時点",
-            "textStyle": {"fontSize": "11px", "color": TEXT_MUTED, "fontFamily": FONT_FAMILY}
-        }],
-        "horizontalTextAlignment": "right"
-    }]}
-    visuals.append(make_textbox("vc_p2_date", 1620, 1045, 280, 25, 0, date_paragraphs))
+    visuals.append(make_visual_container(matrix2_config, [], 20, 140, 1880, 920, 0))
 
     return {
-        "config": json.dumps(page_config, ensure_ascii=False),
+        "config": json.dumps({}, ensure_ascii=False),
         "displayName": "市区町村詳細",
         "displayOption": 1,
         "filters": json.dumps(page_filters, ensure_ascii=False),
-        "height": float(PAGE_HEIGHT),
+        "height": 1080.0,
         "name": "ReportSection_page2",
         "ordinal": 1,
         "visualContainers": visuals,
-        "width": float(PAGE_WIDTH)
+        "width": 1920.0
     }
 
 
 # ============================================================
 # REPORT-LEVEL CONFIG
 # ============================================================
+
 def build_report():
     report_config = {
         "version": "5.44",
         "themeCollection": {
             "baseTheme": {"name": "CY23SU08", "version": "5.46", "type": 2},
-            "customTheme": {
-                "name": "Digital_Agency_Dashboard_Desig3362615343750506.json",
-                "version": "5.46",
-                "type": 1
-            }
+            "customTheme": {"name": "Digital_Agency_Dashboard_Desig3362615343750506.json", "version": "5.46", "type": 1}
         },
         "activeSectionIndex": 0,
         "defaultDrillFilterOtherVisuals": True,
@@ -918,11 +524,7 @@ def build_report():
         {
             "resourcePackage": {
                 "disabled": False,
-                "items": [{
-                    "name": "Digital_Agency_Dashboard_Desig3362615343750506.json",
-                    "path": "Digital_Agency_Dashboard_Desig3362615343750506.json",
-                    "type": 201
-                }],
+                "items": [{"name": "Digital_Agency_Dashboard_Desig3362615343750506.json", "path": "Digital_Agency_Dashboard_Desig3362615343750506.json", "type": 201}],
                 "name": "RegisteredResources",
                 "type": 1
             }
@@ -944,49 +546,132 @@ def build_report():
 
 
 # ============================================================
+# VALIDATION
+# ============================================================
+
+def validate_report(report):
+    """Validate all embedded JSON strings and structural requirements."""
+    errors = []
+
+    # Validate top-level config
+    try:
+        top = json.loads(report["config"])
+        assert "version" in top, "Top config missing 'version'"
+        assert "themeCollection" in top, "Top config missing 'themeCollection'"
+        assert "customTheme" in top.get("themeCollection", {}), "Should have customTheme"
+    except (json.JSONDecodeError, AssertionError) as e:
+        errors.append(f"Top-level config: {e}")
+
+    # 'theme' key at top level should exist
+    if "theme" not in report:
+        errors.append("Top-level 'theme' property should exist")
+
+    # Validate each section
+    for i, section in enumerate(report["sections"]):
+        sec_name = section.get("displayName", f"section_{i}")
+
+        try:
+            json.loads(section["config"])
+        except json.JSONDecodeError as e:
+            errors.append(f"Section '{sec_name}' config: {e}")
+
+        try:
+            filters = json.loads(section["filters"])
+            assert isinstance(filters, list), "Filters must be a JSON array"
+        except (json.JSONDecodeError, AssertionError) as e:
+            errors.append(f"Section '{sec_name}' filters: {e}")
+
+        # Validate visual containers
+        visual_names = set()
+        for j, vc in enumerate(section.get("visualContainers", [])):
+            try:
+                vc_config = json.loads(vc["config"])
+                name = vc_config.get("name", "")
+                if not name:
+                    errors.append(f"Section '{sec_name}', visual {j}: missing 'name'")
+                if name in visual_names:
+                    errors.append(f"Section '{sec_name}', visual {j}: duplicate name '{name}'")
+                visual_names.add(name)
+
+                sv = vc_config.get("singleVisual", {})
+                vt = sv.get("visualType", "")
+                if not vt:
+                    errors.append(f"Visual '{name}': missing visualType")
+
+                pq = sv.get("prototypeQuery")
+                if pq:
+                    assert pq.get("Version") == 2, f"Visual '{name}': Version must be 2"
+                    assert "From" in pq, f"Visual '{name}': missing 'From'"
+                    assert "Select" in pq, f"Visual '{name}': missing 'Select'"
+                    for frm in pq["From"]:
+                        assert frm.get("Type") == 0, f"Visual '{name}': From Type must be 0"
+
+            except (json.JSONDecodeError, AssertionError) as e:
+                errors.append(f"Section '{sec_name}', visual {j}: {e}")
+
+            try:
+                vc_filters = json.loads(vc["filters"])
+                assert isinstance(vc_filters, list)
+            except (json.JSONDecodeError, AssertionError) as e:
+                errors.append(f"Section '{sec_name}', visual {j} filters: {e}")
+
+    return errors
+
+
+# ============================================================
 # MAIN
 # ============================================================
+
 def main():
     output_path = "/Users/kei/Git/26_administrative_procedures_online/26_administrative_procedures_online.Report/report.json"
 
+    print("Building report.json...")
     report = build_report()
 
-    # Validate JSON round-trip before writing
-    json_str = json.dumps(report, ensure_ascii=False, indent=2)
-    validated = json.loads(json_str)  # will raise if invalid
+    print("Validating...")
+    errors = validate_report(report)
+    if errors:
+        print("VALIDATION ERRORS:")
+        for err in errors:
+            print(f"  - {err}")
+        sys.exit(1)
 
-    # Also validate all embedded JSON strings
-    def validate_embedded_json(obj, path="root"):
+    json_str = json.dumps(report, ensure_ascii=False, indent=2)
+
+    # Double-check round-trip
+    readback = json.loads(json_str)
+
+    # Recursively validate all embedded JSON strings
+    def validate_embedded(obj, path="root"):
         if isinstance(obj, dict):
             for key, val in obj.items():
                 if key in ("config", "filters") and isinstance(val, str):
                     try:
                         json.loads(val)
                     except json.JSONDecodeError as e:
-                        raise ValueError(f"Invalid embedded JSON at {path}.{key}: {e}\nValue: {val[:200]}")
+                        raise ValueError(f"Invalid embedded JSON at {path}.{key}: {e}")
                 else:
-                    validate_embedded_json(val, f"{path}.{key}")
+                    validate_embedded(val, f"{path}.{key}")
         elif isinstance(obj, list):
             for i, item in enumerate(obj):
-                validate_embedded_json(item, f"{path}[{i}]")
+                validate_embedded(item, f"{path}[{i}]")
 
-    validate_embedded_json(validated)
+    validate_embedded(readback)
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(json_str)
 
-    # Summary statistics
-    p1_visuals = len(report["sections"][0]["visualContainers"])
-    p2_visuals = len(report["sections"][1]["visualContainers"])
-    total_size = len(json_str)
-
-    print(f"Report generated successfully: {output_path}")
+    # Summary
+    p1_count = len(report["sections"][0]["visualContainers"])
+    p2_count = len(report["sections"][1]["visualContainers"])
+    print(f"\nWrote: {output_path}")
     print(f"  Pages: {len(report['sections'])}")
-    print(f"  Page 1 '{report['sections'][0]['displayName']}': {p1_visuals} visual containers")
-    print(f"  Page 2 '{report['sections'][1]['displayName']}': {p2_visuals} visual containers")
-    print(f"  Total JSON size: {total_size:,} bytes")
-    print("  All embedded JSON validated successfully.")
+    print(f"  Page 1 '{report['sections'][0]['displayName']}': {p1_count} visuals")
+    print(f"  Page 2 '{report['sections'][1]['displayName']}': {p2_count} visuals")
+    print(f"  JSON size: {len(json_str):,} bytes")
+    print(f"  No 'theme' at top level: {'theme' not in report}")
+    print("  All embedded JSON validated OK.")
 
 
 if __name__ == "__main__":

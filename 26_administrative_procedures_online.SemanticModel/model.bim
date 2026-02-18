@@ -171,7 +171,7 @@
           },
           {
             "name": "自治体数",
-            "expression": "DISTINCTCOUNT ( 'オンライン化状況'[団体名] )",
+            "expression": "DISTINCTCOUNT ( 'オンライン化状況'[コード] )",
             "formatString": "#,##0",
             "lineageTag": "b1000001-0001-0001-0001-000000000006"
           },
@@ -180,7 +180,7 @@
             "expression": [
               "",
               "SUMX (",
-              "    VALUES ( 'オンライン化状況'[団体名] ),",
+              "    VALUES ( 'オンライン化状況'[コード] ),",
               "    VAR _未対応 =",
               "        CALCULATE (",
               "            COUNTROWS ( 'オンライン化状況' ),",
