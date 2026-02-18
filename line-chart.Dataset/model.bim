@@ -1,0 +1,328 @@
+{
+  "compatibilityLevel": 1601,
+  "model": {
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"オンライン化状況\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "ja-JP",
+    "cultures": [
+      {
+        "name": "ja-JP",
+        "linguisticMetadata": {
+          "content": {
+            "DynamicImprovement": "HighConfidence",
+            "Language": "ja-JP",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "discourageImplicitMeasures": true,
+    "tables": [
+      {
+        "name": "オンライン化状況",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "コード",
+            "dataType": "string",
+            "lineageTag": "a1000001-0001-0001-0001-000000000001",
+            "sourceColumn": "コード",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "地域ブロック",
+            "dataType": "string",
+            "lineageTag": "a1000001-0001-0001-0001-000000000002",
+            "sourceColumn": "地域ブロック",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "都道府県",
+            "dataType": "string",
+            "lineageTag": "a1000001-0001-0001-0001-000000000003",
+            "sourceColumn": "都道府県",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "団体名",
+            "dataType": "string",
+            "lineageTag": "a1000001-0001-0001-0001-000000000004",
+            "sourceColumn": "団体名",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "団体名フリガナ",
+            "dataType": "string",
+            "lineageTag": "a1000001-0001-0001-0001-000000000005",
+            "sourceColumn": "団体名フリガナ",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "団体区分",
+            "dataType": "string",
+            "lineageTag": "a1000001-0001-0001-0001-000000000006",
+            "sourceColumn": "団体区分",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "大カテゴリ",
+            "dataType": "string",
+            "lineageTag": "a1000001-0001-0001-0001-000000000007",
+            "sourceColumn": "大カテゴリ",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "サブカテゴリ",
+            "dataType": "string",
+            "lineageTag": "a1000001-0001-0001-0001-000000000008",
+            "sourceColumn": "サブカテゴリ",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "手続名",
+            "dataType": "string",
+            "lineageTag": "a1000001-0001-0001-0001-000000000009",
+            "sourceColumn": "手続名",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "重点手続",
+            "dataType": "string",
+            "lineageTag": "a1000001-0001-0001-0001-00000000000a",
+            "sourceColumn": "重点手続",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "オンライン化状況",
+            "dataType": "string",
+            "lineageTag": "a1000001-0001-0001-0001-00000000000b",
+            "sourceColumn": "オンライン化状況",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "その他手続数",
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "a1000001-0001-0001-0001-00000000000c",
+            "sourceColumn": "その他手続数",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "a1000001-0001-0001-0001-000000000000",
+        "measures": [
+          {
+            "name": "オンライン対応数",
+            "expression": "COUNTROWS ( FILTER ( 'オンライン化状況', 'オンライン化状況'[オンライン化状況] = \"○\" ) )",
+            "formatString": "#,##0",
+            "lineageTag": "b1000001-0001-0001-0001-000000000001"
+          },
+          {
+            "name": "該当なし数",
+            "expression": "COUNTROWS ( FILTER ( 'オンライン化状況', 'オンライン化状況'[オンライン化状況] = \"ー\" ) )",
+            "formatString": "#,##0",
+            "lineageTag": "b1000001-0001-0001-0001-000000000002"
+          },
+          {
+            "name": "未対応数",
+            "expression": "COUNTROWS ( FILTER ( 'オンライン化状況', 'オンライン化状況'[オンライン化状況] = \"\" ) )",
+            "formatString": "#,##0",
+            "lineageTag": "b1000001-0001-0001-0001-000000000003"
+          },
+          {
+            "name": "オンライン化率",
+            "expression": [
+              "",
+              "VAR _Online = [オンライン対応数]",
+              "VAR _Total = _Online + [未対応数]",
+              "RETURN",
+              "DIVIDE ( _Online, _Total )"
+            ],
+            "formatString": "0.0%",
+            "lineageTag": "b1000001-0001-0001-0001-000000000004"
+          },
+          {
+            "name": "手続数",
+            "expression": "COUNTROWS ( 'オンライン化状況' )",
+            "formatString": "#,##0",
+            "lineageTag": "b1000001-0001-0001-0001-000000000005"
+          },
+          {
+            "name": "自治体数",
+            "expression": "DISTINCTCOUNT ( 'オンライン化状況'[団体名] )",
+            "formatString": "#,##0",
+            "lineageTag": "b1000001-0001-0001-0001-000000000006"
+          },
+          {
+            "name": "子育て介護26手続完了自治体数",
+            "expression": [
+              "",
+              "SUMX (",
+              "    VALUES ( 'オンライン化状況'[団体名] ),",
+              "    VAR _未対応 =",
+              "        CALCULATE (",
+              "            COUNTROWS ( 'オンライン化状況' ),",
+              "            'オンライン化状況'[サブカテゴリ] IN { \"ア.子育て関係\", \"イ.介護関係\" },",
+              "            'オンライン化状況'[オンライン化状況] = \"\"",
+              "        )",
+              "    RETURN",
+              "        IF ( _未対応 = 0, 1, 0 )",
+              ")"
+            ],
+            "formatString": "#,##0",
+            "lineageTag": "b1000001-0001-0001-0001-000000000007"
+          },
+          {
+            "name": "子育て介護26手続完了率",
+            "expression": "DIVIDE ( [子育て介護26手続完了自治体数], [自治体数] )",
+            "formatString": "0.0%",
+            "lineageTag": "b1000001-0001-0001-0001-000000000008"
+          },
+          {
+            "name": "子育て介護オンライン化率_自治体別",
+            "expression": [
+              "",
+              "VAR _Online =",
+              "    CALCULATE (",
+              "        COUNTROWS ( 'オンライン化状況' ),",
+              "        'オンライン化状況'[サブカテゴリ] IN { \"ア.子育て関係\", \"イ.介護関係\" },",
+              "        'オンライン化状況'[オンライン化状況] = \"○\"",
+              "    )",
+              "VAR _Applicable =",
+              "    CALCULATE (",
+              "        COUNTROWS ( 'オンライン化状況' ),",
+              "        'オンライン化状況'[サブカテゴリ] IN { \"ア.子育て関係\", \"イ.介護関係\" },",
+              "        'オンライン化状況'[オンライン化状況] IN { \"○\", \"\" }",
+              "    )",
+              "RETURN",
+              "DIVIDE ( _Online, _Applicable )"
+            ],
+            "formatString": "0%",
+            "lineageTag": "b1000001-0001-0001-0001-000000000009"
+          },
+          {
+            "name": "都道府県ラベル",
+            "expression": [
+              "",
+              "VAR _Pref = SELECTEDVALUE ( 'オンライン化状況'[都道府県] )",
+              "VAR _Completed = [子育て介護26手続完了自治体数]",
+              "VAR _Total = [自治体数]",
+              "RETURN",
+              "_Pref & \"(\" & _Completed & \" / \" & _Total & \")\""
+            ],
+            "lineageTag": "b1000001-0001-0001-0001-00000000000a"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "オンライン化状況",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"data_unpivoted.csv\"), [Delimiter=\",\", Columns=12, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedTypes = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"コード\", type text},",
+                "        {\"地域ブロック\", type text},",
+                "        {\"都道府県\", type text},",
+                "        {\"団体名\", type text},",
+                "        {\"団体名フリガナ\", type text},",
+                "        {\"団体区分\", type text},",
+                "        {\"大カテゴリ\", type text},",
+                "        {\"サブカテゴリ\", type text},",
+                "        {\"手続名\", type text},",
+                "        {\"重点手続\", type text},",
+                "        {\"オンライン化状況\", type text},",
+                "        {\"その他手続数\", Int64.Type}",
+                "    })",
+                "in",
+                "    ChangedTypes"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "完了状況",
+        "columns": [
+          {
+            "name": "ステータス",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "c1000001-0001-0001-0001-000000000001",
+            "sourceColumn": "[ステータス]",
+            "sortByColumn": "順序",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "順序",
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "c1000001-0001-0001-0001-000000000002",
+            "sourceColumn": "[順序]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "c1000001-0001-0001-0001-000000000000",
+        "measures": [
+          {
+            "name": "完了状況値",
+            "expression": [
+              "",
+              "VAR _Status = SELECTEDVALUE ( '完了状況'[ステータス] )",
+              "VAR _Completed = [子育て介護26手続完了自治体数]",
+              "VAR _Total = [自治体数]",
+              "RETURN",
+              "SWITCH (",
+              "    _Status,",
+              "    \"完了\", _Completed,",
+              "    \"未完了\", _Total - _Completed",
+              ")"
+            ],
+            "formatString": "#,##0",
+            "lineageTag": "d1000001-0001-0001-0001-000000000001"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "完了状況",
+            "mode": "import",
+            "source": {
+              "expression": "UNION ( ROW ( \"ステータス\", \"完了\", \"順序\", 1 ), ROW ( \"ステータス\", \"未完了\", \"順序\", 2 ) )",
+              "type": "calculated"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
