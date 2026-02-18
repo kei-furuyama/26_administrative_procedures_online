@@ -195,8 +195,92 @@ def make_slicer(name, x, y, w, h, z, column_name, title_text):
 
 
 # ============================================================
+# Helper: prefecture card with visual-level filter
+# ============================================================
+
+def make_pref_card(name, x, y, w, h, z, pref_name):
+    """Build a card visual for a single prefecture, filtered by visual-level filter."""
+    config = {
+        "name": name,
+        "layouts": [{"id": 0, "position": position(x, y, z, w, h)}],
+        "singleVisual": {
+            "visualType": "card",
+            "projections": {
+                "Values": [{"queryRef": "o.子育て介護26手続完了率"}]
+            },
+            "prototypeQuery": {
+                "Version": 2,
+                "From": [{"Name": "o", "Entity": "オンライン化状況", "Type": 0}],
+                "Select": [{
+                    "Measure": {
+                        "Expression": {"SourceRef": {"Source": "o"}},
+                        "Property": "子育て介護26手続完了率"
+                    },
+                    "Name": "o.子育て介護26手続完了率"
+                }]
+            },
+            "objects": {
+                "categoryLabels": [{"properties": {"show": lit_bool(False)}}]
+            },
+            "vcObjects": {
+                "title": [{"properties": {
+                    "show": lit_bool(True),
+                    "text": lit_str(pref_name),
+                    "bold": lit_bool(True)
+                }}]
+            }
+        }
+    }
+    # Visual-level filter for this prefecture
+    visual_filter = [{
+        "name": f"filter_{name}",
+        "expression": {
+            "Column": {
+                "Expression": {"SourceRef": {"Entity": "オンライン化状況"}},
+                "Property": "都道府県"
+            }
+        },
+        "type": "Categorical",
+        "filter": {
+            "Version": 2,
+            "From": [{"Name": "o", "Entity": "オンライン化状況", "Type": 0}],
+            "Where": [{
+                "Condition": {
+                    "Comparison": {
+                        "ComparisonKind": 0,
+                        "Left": {
+                            "Column": {
+                                "Expression": {"SourceRef": {"Source": "o"}},
+                                "Property": "都道府県"
+                            }
+                        },
+                        "Right": {
+                            "Literal": {"Value": f"'{pref_name}'"}
+                        }
+                    }
+                }
+            }]
+        },
+        "isHiddenInViewMode": True
+    }]
+    return make_visual_container(config, visual_filter, x, y, w, h, z)
+
+
+# ============================================================
 # PAGE 1: 都道府県一覧
 # ============================================================
+
+# 47都道府県（標準順序）
+PREFECTURES = [
+    "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県",
+    "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県",
+    "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県",
+    "岐阜県", "静岡県", "愛知県", "三重県",
+    "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県",
+    "鳥取県", "島根県", "岡山県", "広島県", "山口県",
+    "徳島県", "香川県", "愛媛県", "高知県",
+    "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"
+]
 
 def build_page1():
     visuals = []
@@ -210,115 +294,26 @@ def build_page1():
     }]}
     visuals.append(make_textbox("vc_p1_title", 40, 20, 900, 50, 0, title_paragraphs))
 
-    # 2. Card: 子育て介護26手続完了率
-    visuals.append(make_card("vc_p1_card_rate", 40, 90, 250, 80, 0, "子育て介護26手続完了率"))
+    # 2. Summary cards row
+    visuals.append(make_card("vc_p1_card_rate", 960, 10, 300, 60, 0, "子育て介護26手続完了率"))
+    visuals.append(make_card("vc_p1_card_completed", 1280, 10, 300, 60, 0, "子育て介護26手続完了自治体数"))
+    visuals.append(make_card("vc_p1_card_total", 1600, 10, 300, 60, 0, "自治体数"))
 
-    # 3. Card: 子育て介護26手続完了自治体数
-    visuals.append(make_card("vc_p1_card_completed", 300, 90, 250, 80, 0, "子育て介護26手続完了自治体数"))
+    # 3. 47 prefecture cards in 8-column grid
+    cols = 8
+    card_w = 228
+    card_h = 120
+    gap_x = 7
+    gap_y = 7
+    grid_start_x = 20
+    grid_start_y = 85
 
-    # 4. Card: 自治体数
-    visuals.append(make_card("vc_p1_card_total", 560, 90, 250, 80, 0, "自治体数"))
-
-    # 5. Donut chart
-    donut_config = {
-        "name": "vc_p1_donut",
-        "layouts": [{"id": 0, "position": position(40, 190, 0, 400, 400)}],
-        "singleVisual": {
-            "visualType": "donutChart",
-            "projections": {
-                "Category": [{"queryRef": "k.ステータス"}],
-                "Y": [{"queryRef": "k.完了状況値"}]
-            },
-            "prototypeQuery": {
-                "Version": 2,
-                "From": [{"Name": "k", "Entity": "完了状況", "Type": 0}],
-                "Select": [
-                    {
-                        "Column": {
-                            "Expression": {"SourceRef": {"Source": "k"}},
-                            "Property": "ステータス"
-                        },
-                        "Name": "k.ステータス"
-                    },
-                    {
-                        "Measure": {
-                            "Expression": {"SourceRef": {"Source": "k"}},
-                            "Property": "完了状況値"
-                        },
-                        "Name": "k.完了状況値"
-                    }
-                ],
-                "OrderBy": [{
-                    "Direction": 1,
-                    "Expression": {
-                        "Column": {
-                            "Expression": {"SourceRef": {"Source": "k"}},
-                            "Property": "順序"
-                        }
-                    }
-                }]
-            },
-            "objects": {
-                "legend": [{"properties": {"show": lit_bool(True)}}]
-            },
-            "vcObjects": minimal_vc_objects()
-        }
-    }
-    visuals.append(make_visual_container(donut_config, [], 40, 190, 400, 400, 0))
-
-    # 6. MultiRowCard: 47都道府県カード一覧
-    multirowcard_config = {
-        "name": "vc_p1_pref_cards",
-        "layouts": [{"id": 0, "position": position(40, 190, 0, 1860, 870)}],
-        "singleVisual": {
-            "visualType": "multiRowCard",
-            "projections": {
-                "Values": [
-                    {"queryRef": "o.都道府県"},
-                    {"queryRef": "o.子育て介護26手続完了率"},
-                    {"queryRef": "o.子育て介護26手続完了自治体数"},
-                    {"queryRef": "o.自治体数"}
-                ]
-            },
-            "prototypeQuery": {
-                "Version": 2,
-                "From": [{"Name": "o", "Entity": "オンライン化状況", "Type": 0}],
-                "Select": [
-                    {
-                        "Column": {
-                            "Expression": {"SourceRef": {"Source": "o"}},
-                            "Property": "都道府県"
-                        },
-                        "Name": "o.都道府県"
-                    },
-                    {
-                        "Measure": {
-                            "Expression": {"SourceRef": {"Source": "o"}},
-                            "Property": "子育て介護26手続完了率"
-                        },
-                        "Name": "o.子育て介護26手続完了率"
-                    },
-                    {
-                        "Measure": {
-                            "Expression": {"SourceRef": {"Source": "o"}},
-                            "Property": "子育て介護26手続完了自治体数"
-                        },
-                        "Name": "o.子育て介護26手続完了自治体数"
-                    },
-                    {
-                        "Measure": {
-                            "Expression": {"SourceRef": {"Source": "o"}},
-                            "Property": "自治体数"
-                        },
-                        "Name": "o.自治体数"
-                    }
-                ]
-            },
-            "objects": {},
-            "vcObjects": minimal_vc_objects()
-        }
-    }
-    visuals.append(make_visual_container(multirowcard_config, [], 40, 190, 1860, 870, 0))
+    for i, pref in enumerate(PREFECTURES):
+        col = i % cols
+        row = i // cols
+        x = grid_start_x + col * (card_w + gap_x)
+        y = grid_start_y + row * (card_h + gap_y)
+        visuals.append(make_pref_card(f"vc_p1_pref_{i:02d}", x, y, card_w, card_h, 0, pref))
 
     return {
         "config": json.dumps({}, ensure_ascii=False),

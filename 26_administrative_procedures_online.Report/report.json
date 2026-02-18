@@ -51,48 +51,453 @@
           "z": 0.0
         },
         {
-          "config": "{\"name\": \"vc_p1_card_rate\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 40, \"y\": 90, \"z\": 0, \"width\": 250, \"height\": 80, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "config": "{\"name\": \"vc_p1_card_rate\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 960, \"y\": 10, \"z\": 0, \"width\": 300, \"height\": 60, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
           "filters": "[]",
-          "height": 80.0,
-          "width": 250.0,
-          "x": 40.0,
-          "y": 90.0,
+          "height": 60.0,
+          "width": 300.0,
+          "x": 960.0,
+          "y": 10.0,
           "z": 0.0
         },
         {
-          "config": "{\"name\": \"vc_p1_card_completed\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 300, \"y\": 90, \"z\": 0, \"width\": 250, \"height\": 80, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了自治体数\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了自治体数\"}, \"Name\": \"o.子育て介護26手続完了自治体数\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "config": "{\"name\": \"vc_p1_card_completed\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1280, \"y\": 10, \"z\": 0, \"width\": 300, \"height\": 60, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了自治体数\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了自治体数\"}, \"Name\": \"o.子育て介護26手続完了自治体数\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
           "filters": "[]",
-          "height": 80.0,
-          "width": 250.0,
-          "x": 300.0,
-          "y": 90.0,
+          "height": 60.0,
+          "width": 300.0,
+          "x": 1280.0,
+          "y": 10.0,
           "z": 0.0
         },
         {
-          "config": "{\"name\": \"vc_p1_card_total\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 560, \"y\": 90, \"z\": 0, \"width\": 250, \"height\": 80, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.自治体数\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"自治体数\"}, \"Name\": \"o.自治体数\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
+          "config": "{\"name\": \"vc_p1_card_total\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1600, \"y\": 10, \"z\": 0, \"width\": 300, \"height\": 60, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.自治体数\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"自治体数\"}, \"Name\": \"o.自治体数\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
           "filters": "[]",
-          "height": 80.0,
-          "width": 250.0,
-          "x": 560.0,
-          "y": 90.0,
+          "height": 60.0,
+          "width": 300.0,
+          "x": 1600.0,
+          "y": 10.0,
           "z": 0.0
         },
         {
-          "config": "{\"name\": \"vc_p1_donut\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 40, \"y\": 190, \"z\": 0, \"width\": 400, \"height\": 400, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"donutChart\", \"projections\": {\"Category\": [{\"queryRef\": \"k.ステータス\"}], \"Y\": [{\"queryRef\": \"k.完了状況値\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"k\", \"Entity\": \"完了状況\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"k\"}}, \"Property\": \"ステータス\"}, \"Name\": \"k.ステータス\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"k\"}}, \"Property\": \"完了状況値\"}, \"Name\": \"k.完了状況値\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"k\"}}, \"Property\": \"順序\"}}}]}, \"objects\": {\"legend\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
-          "filters": "[]",
-          "height": 400.0,
-          "width": 400.0,
-          "x": 40.0,
-          "y": 190.0,
+          "config": "{\"name\": \"vc_p1_pref_00\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 85, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'北海道'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_00\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'北海道'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 20.0,
+          "y": 85.0,
           "z": 0.0
         },
         {
-          "config": "{\"name\": \"vc_p1_pref_cards\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 40, \"y\": 190, \"z\": 0, \"width\": 1860, \"height\": 870, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"multiRowCard\", \"projections\": {\"Values\": [{\"queryRef\": \"o.都道府県\"}, {\"queryRef\": \"o.子育て介護26手続完了率\"}, {\"queryRef\": \"o.子育て介護26手続完了自治体数\"}, {\"queryRef\": \"o.自治体数\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}, \"Name\": \"o.都道府県\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了自治体数\"}, \"Name\": \"o.子育て介護26手続完了自治体数\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"自治体数\"}, \"Name\": \"o.自治体数\"}]}, \"objects\": {}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}}}",
-          "filters": "[]",
-          "height": 870.0,
-          "width": 1860.0,
-          "x": 40.0,
-          "y": 190.0,
+          "config": "{\"name\": \"vc_p1_pref_01\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 255, \"y\": 85, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'青森県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_01\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'青森県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 255.0,
+          "y": 85.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_02\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 490, \"y\": 85, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'岩手県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_02\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'岩手県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 490.0,
+          "y": 85.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_03\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 725, \"y\": 85, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'宮城県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_03\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'宮城県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 725.0,
+          "y": 85.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_04\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 960, \"y\": 85, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'秋田県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_04\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'秋田県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 960.0,
+          "y": 85.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_05\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1195, \"y\": 85, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'山形県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_05\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'山形県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 1195.0,
+          "y": 85.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_06\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1430, \"y\": 85, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'福島県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_06\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'福島県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 1430.0,
+          "y": 85.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_07\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1665, \"y\": 85, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'茨城県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_07\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'茨城県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 1665.0,
+          "y": 85.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_08\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 212, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'栃木県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_08\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'栃木県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 20.0,
+          "y": 212.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_09\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 255, \"y\": 212, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'群馬県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_09\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'群馬県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 255.0,
+          "y": 212.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_10\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 490, \"y\": 212, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'埼玉県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_10\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'埼玉県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 490.0,
+          "y": 212.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_11\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 725, \"y\": 212, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'千葉県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_11\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'千葉県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 725.0,
+          "y": 212.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_12\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 960, \"y\": 212, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'東京都'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_12\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'東京都'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 960.0,
+          "y": 212.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_13\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1195, \"y\": 212, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'神奈川県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_13\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'神奈川県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 1195.0,
+          "y": 212.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_14\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1430, \"y\": 212, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'新潟県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_14\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'新潟県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 1430.0,
+          "y": 212.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_15\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1665, \"y\": 212, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'富山県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_15\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'富山県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 1665.0,
+          "y": 212.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_16\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 339, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'石川県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_16\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'石川県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 20.0,
+          "y": 339.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_17\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 255, \"y\": 339, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'福井県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_17\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'福井県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 255.0,
+          "y": 339.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_18\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 490, \"y\": 339, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'山梨県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_18\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'山梨県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 490.0,
+          "y": 339.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_19\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 725, \"y\": 339, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'長野県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_19\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'長野県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 725.0,
+          "y": 339.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_20\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 960, \"y\": 339, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'岐阜県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_20\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'岐阜県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 960.0,
+          "y": 339.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_21\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1195, \"y\": 339, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'静岡県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_21\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'静岡県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 1195.0,
+          "y": 339.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_22\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1430, \"y\": 339, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'愛知県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_22\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'愛知県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 1430.0,
+          "y": 339.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_23\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1665, \"y\": 339, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'三重県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_23\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'三重県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 1665.0,
+          "y": 339.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_24\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 466, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'滋賀県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_24\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'滋賀県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 20.0,
+          "y": 466.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_25\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 255, \"y\": 466, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'京都府'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_25\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'京都府'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 255.0,
+          "y": 466.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_26\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 490, \"y\": 466, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'大阪府'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_26\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'大阪府'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 490.0,
+          "y": 466.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_27\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 725, \"y\": 466, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'兵庫県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_27\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'兵庫県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 725.0,
+          "y": 466.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_28\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 960, \"y\": 466, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'奈良県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_28\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'奈良県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 960.0,
+          "y": 466.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_29\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1195, \"y\": 466, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'和歌山県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_29\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'和歌山県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 1195.0,
+          "y": 466.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_30\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1430, \"y\": 466, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'鳥取県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_30\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'鳥取県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 1430.0,
+          "y": 466.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_31\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1665, \"y\": 466, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'島根県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_31\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'島根県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 1665.0,
+          "y": 466.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_32\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 593, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'岡山県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_32\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'岡山県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 20.0,
+          "y": 593.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_33\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 255, \"y\": 593, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'広島県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_33\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'広島県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 255.0,
+          "y": 593.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_34\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 490, \"y\": 593, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'山口県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_34\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'山口県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 490.0,
+          "y": 593.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_35\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 725, \"y\": 593, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'徳島県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_35\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'徳島県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 725.0,
+          "y": 593.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_36\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 960, \"y\": 593, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'香川県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_36\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'香川県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 960.0,
+          "y": 593.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_37\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1195, \"y\": 593, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'愛媛県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_37\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'愛媛県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 1195.0,
+          "y": 593.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_38\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1430, \"y\": 593, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'高知県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_38\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'高知県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 1430.0,
+          "y": 593.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_39\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1665, \"y\": 593, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'福岡県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_39\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'福岡県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 1665.0,
+          "y": 593.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_40\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 720, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'佐賀県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_40\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'佐賀県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 20.0,
+          "y": 720.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_41\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 255, \"y\": 720, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'長崎県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_41\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'長崎県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 255.0,
+          "y": 720.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_42\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 490, \"y\": 720, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'熊本県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_42\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'熊本県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 490.0,
+          "y": 720.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_43\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 725, \"y\": 720, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'大分県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_43\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'大分県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 725.0,
+          "y": 720.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_44\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 960, \"y\": 720, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'宮崎県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_44\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'宮崎県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 960.0,
+          "y": 720.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_45\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1195, \"y\": 720, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'鹿児島県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_45\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'鹿児島県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 1195.0,
+          "y": 720.0,
+          "z": 0.0
+        },
+        {
+          "config": "{\"name\": \"vc_p1_pref_46\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1430, \"y\": 720, \"z\": 0, \"width\": 228, \"height\": 120, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"o.子育て介護26手続完了率\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"子育て介護26手続完了率\"}, \"Name\": \"o.子育て介護26手続完了率\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'沖縄県'\"}}}, \"bold\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}}}]}}}",
+          "filters": "[{\"name\": \"filter_vc_p1_pref_46\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"オンライン化状況\"}}, \"Property\": \"都道府県\"}}, \"type\": \"Categorical\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"o\", \"Entity\": \"オンライン化状況\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 0, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"o\"}}, \"Property\": \"都道府県\"}}, \"Right\": {\"Literal\": {\"Value\": \"'沖縄県'\"}}}}}]}, \"isHiddenInViewMode\": true}]",
+          "height": 120.0,
+          "width": 228.0,
+          "x": 1430.0,
+          "y": 720.0,
           "z": 0.0
         }
       ],
