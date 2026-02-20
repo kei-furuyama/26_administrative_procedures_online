@@ -11,6 +11,20 @@ import os
 import sys
 
 # ============================================================
+# DA template color constants
+# ============================================================
+BG_PAGE = "#FFFFFF"        # ページ背景
+BG_VISUAL = "#F8F8FB"      # ビジュアル背景（DAテンプレートの特徴的な薄いグレーブルー）
+BORDER_VISUAL = "#F8F8FB"  # ビジュアル枠線（背景と同色でシームレス）
+NEUTRAL_GRAY = "#D8D8DB"   # 中立グレー（グリッド線・区切り線・未完了データ等）
+TEXT_PRIMARY = "#1A1A1A"   # メインテキスト色
+TEXT_SECONDARY = "#666666"  # 補助テキスト色
+TEXT_MUTED = "#999999"     # 控えめテキスト色（日付等）
+ACCENT_BLUE = "#0017C1"    # アクセントカラー（DAブルー）
+ACCENT_LIGHT = "#C5D7FB"   # ライトアクセント（DA dataColors 3番目）
+RADIUS_DEFAULT = 20        # デフォルト角丸
+
+# ============================================================
 # Helper functions
 # ============================================================
 
@@ -72,7 +86,7 @@ def textbox(name, x, y, w, h, z, paragraphs):
     return make_vc(config, [], x, y, w, h, z)
 
 
-def shape_bg(name, x, y, w, h, z, fill="#FFFFFF", border_color="#E8E8EB", radius=20):
+def shape_bg(name, x, y, w, h, z, fill=BG_VISUAL, border_color=BORDER_VISUAL, radius=RADIUS_DEFAULT):
     config = {
         "name": name,
         "layouts": [{"id": 0, "position": position(x, y, z, w, h)}],
@@ -105,7 +119,7 @@ def card(name, x, y, w, h, z, measure, *, font_size=None, show_category=False):
     if font_size is not None:
         objects["labels"] = [{"properties": {
             "fontSize": lit_double(font_size),
-            "color": solid_color("#1A1A1A"),
+            "color": solid_color(TEXT_PRIMARY),
         }}]
     objects["categoryLabels"] = [{"properties": {"show": lit_bool(show_category)}}]
     config = {
@@ -156,7 +170,7 @@ def pref_card(name, x, y, w, h, z, pref_name):
             "objects": {
                 "labels": [{"properties": {
                     "fontSize": lit_double(28),
-                    "color": solid_color("#0017C1"),
+                    "color": solid_color(ACCENT_BLUE),
                     "fontFamily": lit_str("Arial"),
                 }}],
                 "categoryLabels": [{"properties": {"show": lit_bool(False)}}],
@@ -165,20 +179,20 @@ def pref_card(name, x, y, w, h, z, pref_name):
                 "title": [{"properties": {
                     "show": lit_bool(True),
                     "text": lit_str(pref_name),
-                    "fontColor": solid_color("#1A1A1A"),
+                    "fontColor": solid_color(TEXT_PRIMARY),
                     "fontSize": lit_double(13),
                     "fontFamily": lit_str("Arial"),
                     "bold": lit_bool(True),
                 }}],
                 "background": [{"properties": {
                     "show": lit_bool(True),
-                    "color": solid_color("#FFFFFF"),
+                    "color": solid_color(BG_VISUAL),
                     "transparency": lit_double(0),
                 }}],
                 "border": [{"properties": {
                     "show": lit_bool(True),
-                    "color": solid_color("#E8E8EB"),
-                    "radius": lit_int(10),
+                    "color": solid_color(BORDER_VISUAL),
+                    "radius": lit_int(RADIUS_DEFAULT),
                 }}],
                 "padding": [{"properties": {
                     "top": lit_double(8),
@@ -248,15 +262,15 @@ def slicer(name, x, y, w, h, z, column, title_text):
                 "title": [{"properties": {
                     "show": lit_bool(True),
                     "text": lit_str(title_text),
-                    "fontColor": solid_color("#1A1A1A"),
+                    "fontColor": solid_color(TEXT_PRIMARY),
                     "fontSize": lit_double(12),
                     "fontFamily": lit_str("Arial"),
                 }}],
                 "background": [{"properties": {"show": lit_bool(False)}}],
                 "border": [{"properties": {
                     "show": lit_bool(True),
-                    "color": solid_color("#D8D8DB"),
-                    "radius": lit_int(10),
+                    "color": solid_color(NEUTRAL_GRAY),
+                    "radius": lit_int(RADIUS_DEFAULT),
                 }}],
             },
         },
@@ -290,15 +304,18 @@ def build_page1():
     # --- Header ---
     v.append(textbox("p1_title", 40, 24, 900, 44, 1, {"paragraphs": [{
         "textRuns": [{"value": "子育て・介護関係の26手続のオンライン化取組状況",
-                      "textStyle": {"fontSize": "22px", "color": "#1A1A1A",
+                      "textStyle": {"fontSize": "22px", "color": TEXT_PRIMARY,
                                     "fontWeight": "bold", "fontFamily": "Arial"}}]
     }]}))
     v.append(textbox("p1_org", 1740, 24, 160, 36, 1, {"paragraphs": [{
         "textRuns": [{"value": "デジタル庁",
-                      "textStyle": {"fontSize": "14px", "color": "#1A1A1A",
+                      "textStyle": {"fontSize": "14px", "color": TEXT_PRIMARY,
                                     "fontFamily": "Arial"}}],
         "horizontalTextAlignment": "right",
     }]}))
+
+    # Header separator line
+    v.append(shape_bg("p1_header_line", 20, 72, 1880, 2, 0.5, fill=NEUTRAL_GRAY, border_color=NEUTRAL_GRAY, radius=0))
 
     # --- Left summary panel ---
     panel_x, panel_y, panel_w, panel_h = 20, 80, 440, 780
@@ -307,10 +324,10 @@ def build_page1():
     # Subtitle
     v.append(textbox("p1_subtitle", 50, 100, 400, 56, 1, {"paragraphs": [
         {"textRuns": [{"value": "子育て・介護関係の全26手続を",
-                       "textStyle": {"fontSize": "16px", "color": "#1A1A1A",
+                       "textStyle": {"fontSize": "16px", "color": TEXT_PRIMARY,
                                      "fontWeight": "bold", "fontFamily": "Arial"}}]},
         {"textRuns": [{"value": "オンライン手続できる自治体の割合",
-                       "textStyle": {"fontSize": "16px", "color": "#1A1A1A",
+                       "textStyle": {"fontSize": "16px", "color": TEXT_PRIMARY,
                                      "fontWeight": "bold", "fontFamily": "Arial"}}]},
     ]}))
 
@@ -336,16 +353,16 @@ def build_page1():
             "objects": {
                 "legend": [{"properties": {"show": lit_bool(False)}}],
                 "dataPoint": [
-                    {"properties": {"fill": solid_color("#0017C1")},
+                    {"properties": {"fill": solid_color(ACCENT_BLUE)},
                      "selector": {"data": [{"scopeId": {"Comparison": {"ComparisonKind": 0, "Left": {"Column": {"Expression": {"SourceRef": {"Entity": "完了状況"}}, "Property": "ステータス"}}, "Right": {"Literal": {"Value": "'完了'"}}}}}]}},
-                    {"properties": {"fill": solid_color("#D8D8DB")},
+                    {"properties": {"fill": solid_color(NEUTRAL_GRAY)},
                      "selector": {"data": [{"scopeId": {"Comparison": {"ComparisonKind": 0, "Left": {"Column": {"Expression": {"SourceRef": {"Entity": "完了状況"}}, "Property": "ステータス"}}, "Right": {"Literal": {"Value": "'未完了'"}}}}}]}},
                 ],
                 "labels": [{"properties": {
                     "show": lit_bool(True),
                     "labelStyle": lit_str("Percent of total"),
                     "fontSize": lit_double(36),
-                    "color": solid_color("#1A1A1A"),
+                    "color": solid_color(TEXT_PRIMARY),
                     "fontFamily": lit_str("Arial"),
                 }}],
                 "slices": [{"properties": {"innerRadiusRatio": lit_int(82)}}],
@@ -362,40 +379,40 @@ def build_page1():
     # KPI label
     v.append(textbox("p1_kpi_label", 50, 480, 380, 24, 1, {"paragraphs": [{
         "textRuns": [{"value": "オンライン化が完了した自治体数／全自治体数",
-                      "textStyle": {"fontSize": "12px", "color": "#666666", "fontFamily": "Arial"}}]
+                      "textStyle": {"fontSize": "12px", "color": TEXT_SECONDARY, "fontFamily": "Arial"}}]
     }]}))
 
     # KPI completed
     v.append(card("p1_kpi_done", 80, 510, 130, 55, 1, "子育て介護26手続完了自治体数", font_size=28))
     # Slash
     v.append(textbox("p1_slash", 210, 516, 30, 42, 1, {"paragraphs": [{
-        "textRuns": [{"value": "／", "textStyle": {"fontSize": "24px", "color": "#1A1A1A", "fontFamily": "Arial"}}]
+        "textRuns": [{"value": "／", "textStyle": {"fontSize": "24px", "color": TEXT_PRIMARY, "fontFamily": "Arial"}}]
     }]}))
     # KPI total
     v.append(card("p1_kpi_total", 240, 510, 130, 55, 1, "自治体数", font_size=28))
 
     # Legend
     v.append(textbox("p1_legend", 50, 590, 380, 120, 1, {"paragraphs": [
-        {"textRuns": [{"value": "凡例", "textStyle": {"fontSize": "13px", "color": "#1A1A1A", "fontWeight": "bold", "fontFamily": "Arial"}}]},
+        {"textRuns": [{"value": "凡例", "textStyle": {"fontSize": "13px", "color": TEXT_PRIMARY, "fontWeight": "bold", "fontFamily": "Arial"}}]},
         {"textRuns": [{"value": "", "textStyle": {"fontSize": "8px"}}]},
         {"textRuns": [
-            {"value": "●", "textStyle": {"fontSize": "13px", "color": "#0017C1", "fontFamily": "Arial"}},
-            {"value": " 100%（全26手続オンライン化完了）", "textStyle": {"fontSize": "13px", "color": "#666666", "fontFamily": "Arial"}},
+            {"value": "●", "textStyle": {"fontSize": "13px", "color": ACCENT_BLUE, "fontFamily": "Arial"}},
+            {"value": " 100%（全26手続オンライン化完了）", "textStyle": {"fontSize": "13px", "color": TEXT_SECONDARY, "fontFamily": "Arial"}},
         ]},
         {"textRuns": [
-            {"value": "●", "textStyle": {"fontSize": "13px", "color": "#C5D7FB", "fontFamily": "Arial"}},
-            {"value": " 80%以上100%未満", "textStyle": {"fontSize": "13px", "color": "#666666", "fontFamily": "Arial"}},
+            {"value": "●", "textStyle": {"fontSize": "13px", "color": ACCENT_LIGHT, "fontFamily": "Arial"}},
+            {"value": " 80%以上100%未満", "textStyle": {"fontSize": "13px", "color": TEXT_SECONDARY, "fontFamily": "Arial"}},
         ]},
         {"textRuns": [
-            {"value": "●", "textStyle": {"fontSize": "13px", "color": "#D8D8DB", "fontFamily": "Arial"}},
-            {"value": " 80%未満", "textStyle": {"fontSize": "13px", "color": "#666666", "fontFamily": "Arial"}},
+            {"value": "●", "textStyle": {"fontSize": "13px", "color": NEUTRAL_GRAY, "fontFamily": "Arial"}},
+            {"value": " 80%未満", "textStyle": {"fontSize": "13px", "color": TEXT_SECONDARY, "fontFamily": "Arial"}},
         ]},
     ]}))
 
     # Date
     v.append(textbox("p1_date", 50, 810, 380, 24, 1, {"paragraphs": [{
         "textRuns": [{"value": "令和６年度末時点",
-                      "textStyle": {"fontSize": "11px", "color": "#999999", "fontFamily": "Arial"}}],
+                      "textStyle": {"fontSize": "11px", "color": TEXT_MUTED, "fontFamily": "Arial"}}],
         "horizontalTextAlignment": "right",
     }]}))
 
@@ -416,7 +433,7 @@ def build_page1():
 
     return {
         "config": json.dumps({"objects": {"background": [{"properties": {
-            "color": solid_color("#FFFFFF"),
+            "color": solid_color(BG_PAGE),
             "transparency": lit_double(0),
         }}]}}, ensure_ascii=False),
         "displayName": "都道府県一覧",
@@ -469,7 +486,7 @@ def build_page2():
                 "text": [{"properties": {
                     "show": lit_bool(True),
                     "text": lit_str("< 都道府県一覧に戻る"),
-                    "fontColor": solid_color("#0017C1"),
+                    "fontColor": solid_color(ACCENT_BLUE),
                     "fontSize": lit_double(14),
                     "fontFamily": lit_str("Arial"),
                     "alignment": lit_str("Left"),
@@ -491,7 +508,7 @@ def build_page2():
 
     # Org
     v.append(textbox("p2_org", 1740, 24, 160, 36, 0, {"paragraphs": [{
-        "textRuns": [{"value": "デジタル庁", "textStyle": {"fontSize": "14px", "color": "#1A1A1A", "fontFamily": "Arial"}}],
+        "textRuns": [{"value": "デジタル庁", "textStyle": {"fontSize": "14px", "color": TEXT_PRIMARY, "fontFamily": "Arial"}}],
         "horizontalTextAlignment": "right",
     }]}))
 
@@ -504,8 +521,8 @@ def build_page2():
 
     # Subtitle
     v.append(textbox("p2_subtitle", 35, 215, 290, 50, 1, {"paragraphs": [
-        {"textRuns": [{"value": "子育て・介護関係の全26手続を", "textStyle": {"fontSize": "14px", "color": "#1A1A1A", "fontWeight": "bold", "fontFamily": "Arial"}}]},
-        {"textRuns": [{"value": "オンライン手続できる自治体の割合", "textStyle": {"fontSize": "14px", "color": "#1A1A1A", "fontWeight": "bold", "fontFamily": "Arial"}}]},
+        {"textRuns": [{"value": "子育て・介護関係の全26手続を", "textStyle": {"fontSize": "14px", "color": TEXT_PRIMARY, "fontWeight": "bold", "fontFamily": "Arial"}}]},
+        {"textRuns": [{"value": "オンライン手続できる自治体の割合", "textStyle": {"fontSize": "14px", "color": TEXT_PRIMARY, "fontWeight": "bold", "fontFamily": "Arial"}}]},
     ]}))
 
     # Donut
@@ -527,10 +544,10 @@ def build_page2():
             "objects": {
                 "legend": [{"properties": {"show": lit_bool(False)}}],
                 "dataPoint": [
-                    {"properties": {"fill": solid_color("#0017C1")}, "selector": {"data": [{"scopeId": {"Comparison": {"ComparisonKind": 0, "Left": {"Column": {"Expression": {"SourceRef": {"Entity": "完了状況"}}, "Property": "ステータス"}}, "Right": {"Literal": {"Value": "'完了'"}}}}}]}},
-                    {"properties": {"fill": solid_color("#D8D8DB")}, "selector": {"data": [{"scopeId": {"Comparison": {"ComparisonKind": 0, "Left": {"Column": {"Expression": {"SourceRef": {"Entity": "完了状況"}}, "Property": "ステータス"}}, "Right": {"Literal": {"Value": "'未完了'"}}}}}]}},
+                    {"properties": {"fill": solid_color(ACCENT_BLUE)}, "selector": {"data": [{"scopeId": {"Comparison": {"ComparisonKind": 0, "Left": {"Column": {"Expression": {"SourceRef": {"Entity": "完了状況"}}, "Property": "ステータス"}}, "Right": {"Literal": {"Value": "'完了'"}}}}}]}},
+                    {"properties": {"fill": solid_color(NEUTRAL_GRAY)}, "selector": {"data": [{"scopeId": {"Comparison": {"ComparisonKind": 0, "Left": {"Column": {"Expression": {"SourceRef": {"Entity": "完了状況"}}, "Property": "ステータス"}}, "Right": {"Literal": {"Value": "'未完了'"}}}}}]}},
                 ],
-                "labels": [{"properties": {"show": lit_bool(True), "labelStyle": lit_str("Percent of total"), "fontSize": lit_double(28), "color": solid_color("#1A1A1A"), "fontFamily": lit_str("Arial")}}],
+                "labels": [{"properties": {"show": lit_bool(True), "labelStyle": lit_str("Percent of total"), "fontSize": lit_double(28), "color": solid_color(TEXT_PRIMARY), "fontFamily": lit_str("Arial")}}],
                 "slices": [{"properties": {"innerRadiusRatio": lit_int(82)}}],
             },
             "vcObjects": {"title": [{"properties": {"show": lit_bool(False)}}], "background": [{"properties": {"show": lit_bool(False)}}], "border": [{"properties": {"show": lit_bool(False)}}]},
@@ -539,22 +556,22 @@ def build_page2():
     v.append(make_vc(donut2, [], 70, 280, 220, 220, 1))
 
     # KPI
-    v.append(textbox("p2_kpi_label", 35, 520, 290, 22, 1, {"paragraphs": [{"textRuns": [{"value": "オンライン化が完了した自治体数／全自治体数", "textStyle": {"fontSize": "11px", "color": "#666666", "fontFamily": "Arial"}}]}]}))
+    v.append(textbox("p2_kpi_label", 35, 520, 290, 22, 1, {"paragraphs": [{"textRuns": [{"value": "オンライン化が完了した自治体数／全自治体数", "textStyle": {"fontSize": "11px", "color": TEXT_SECONDARY, "fontFamily": "Arial"}}]}]}))
     v.append(card("p2_kpi_done", 60, 548, 110, 50, 1, "子育て介護26手続完了自治体数", font_size=24))
-    v.append(textbox("p2_slash", 170, 554, 24, 38, 1, {"paragraphs": [{"textRuns": [{"value": "／", "textStyle": {"fontSize": "20px", "color": "#1A1A1A", "fontFamily": "Arial"}}]}]}))
+    v.append(textbox("p2_slash", 170, 554, 24, 38, 1, {"paragraphs": [{"textRuns": [{"value": "／", "textStyle": {"fontSize": "20px", "color": TEXT_PRIMARY, "fontFamily": "Arial"}}]}]}))
     v.append(card("p2_kpi_total", 194, 548, 110, 50, 1, "自治体数", font_size=24))
 
     # Legend
     v.append(textbox("p2_legend", 360, 1030, 700, 25, 0, {"paragraphs": [{"textRuns": [
-        {"value": "●", "textStyle": {"fontSize": "12px", "color": "#0017C1", "fontFamily": "Arial"}},
-        {"value": " オンライン手続できる　", "textStyle": {"fontSize": "12px", "color": "#666666", "fontFamily": "Arial"}},
-        {"value": "●", "textStyle": {"fontSize": "12px", "color": "#D8D8DB", "fontFamily": "Arial"}},
-        {"value": " オンライン手続できない　", "textStyle": {"fontSize": "12px", "color": "#666666", "fontFamily": "Arial"}},
-        {"value": "ー 該当する手続がない", "textStyle": {"fontSize": "12px", "color": "#666666", "fontFamily": "Arial"}},
+        {"value": "●", "textStyle": {"fontSize": "12px", "color": ACCENT_BLUE, "fontFamily": "Arial"}},
+        {"value": " オンライン手続できる　", "textStyle": {"fontSize": "12px", "color": TEXT_SECONDARY, "fontFamily": "Arial"}},
+        {"value": "●", "textStyle": {"fontSize": "12px", "color": NEUTRAL_GRAY, "fontFamily": "Arial"}},
+        {"value": " オンライン手続できない　", "textStyle": {"fontSize": "12px", "color": TEXT_SECONDARY, "fontFamily": "Arial"}},
+        {"value": "ー 該当する手続がない", "textStyle": {"fontSize": "12px", "color": TEXT_SECONDARY, "fontFamily": "Arial"}},
     ]}]}))
 
     # Date
-    v.append(textbox("p2_date", 1620, 1045, 280, 25, 0, {"paragraphs": [{"textRuns": [{"value": "令和６年度末時点", "textStyle": {"fontSize": "11px", "color": "#999999", "fontFamily": "Arial"}}], "horizontalTextAlignment": "right"}]}))
+    v.append(textbox("p2_date", 1620, 1045, 280, 25, 0, {"paragraphs": [{"textRuns": [{"value": "令和６年度末時点", "textStyle": {"fontSize": "11px", "color": TEXT_MUTED, "fontFamily": "Arial"}}], "horizontalTextAlignment": "right"}]}))
 
     # Matrix
     matrix_config = {
@@ -582,8 +599,8 @@ def build_page2():
             },
             "vcObjects": {
                 "title": [{"properties": {"show": lit_bool(False)}}],
-                "background": [{"properties": {"show": lit_bool(True), "color": solid_color("#FFFFFF"), "transparency": lit_double(0)}}],
-                "border": [{"properties": {"show": lit_bool(True), "color": solid_color("#E8E8EB"), "radius": lit_int(20)}}],
+                "background": [{"properties": {"show": lit_bool(True), "color": solid_color(BG_VISUAL), "transparency": lit_double(0)}}],
+                "border": [{"properties": {"show": lit_bool(True), "color": solid_color(BORDER_VISUAL), "radius": lit_int(RADIUS_DEFAULT)}}],
             },
         },
     }
@@ -591,7 +608,7 @@ def build_page2():
 
     return {
         "config": json.dumps({"objects": {"background": [{"properties": {
-            "color": solid_color("#FFFFFF"),
+            "color": solid_color(BG_PAGE),
             "transparency": lit_double(0),
         }}]}}, ensure_ascii=False),
         "displayName": "市区町村詳細",
